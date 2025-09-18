@@ -1,0 +1,25 @@
+{
+  "name": "employee-json-server",
+  "version": "1.0.0",
+  "description": "JSON Server for Employee REST API",
+  "main": "server.js",
+  "scripts": {
+    "start": "json-server --watch DataFolder/employees.json --port 3001 --host 0.0.0.0",
+    "dev": "json-server --watch DataFolder/employees.json --port 3001 --host 0.0.0.0",
+    "test": "chmod +x test-json-server.sh && ./test-json-server.sh",
+    "test:simple": "curl -s http://localhost:3001/employees | head -20",
+    "health": "curl -s http://localhost:3001 && echo",
+    "reset": "git checkout DataFolder/employees.json"
+  },
+  "dependencies": {
+    "json-server": "^0.17.4"
+  },
+  "keywords": [
+    "json-server",
+    "rest-api",
+    "mock-api",
+    "employee"
+  ],
+  "author": "Developer",
+  "license": "MIT"
+}

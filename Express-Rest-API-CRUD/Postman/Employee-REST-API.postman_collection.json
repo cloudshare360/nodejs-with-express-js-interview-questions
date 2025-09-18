@@ -1,0 +1,270 @@
+{
+  "info": {
+    "name": "Employee REST API",
+    "description": "Complete CRUD operations for Employee Management System",
+    "version": "1.0.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "apiUrl",
+      "value": "{{baseUrl}}/api/employees",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "API Info",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/",
+          "host": ["{{baseUrl}}"],
+          "path": [""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Employees",
+      "item": [
+        {
+          "name": "Get All Employees",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{apiUrl}}",
+              "host": ["{{apiUrl}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Employees with Pagination",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{apiUrl}}?page=1&limit=3",
+              "host": ["{{apiUrl}}"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "3"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Employees by Department",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{apiUrl}}?department=Engineering",
+              "host": ["{{apiUrl}}"],
+              "query": [
+                {
+                  "key": "department",
+                  "value": "Engineering"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Employees by Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{apiUrl}}?status=active",
+              "host": ["{{apiUrl}}"],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "active"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Employee by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{apiUrl}}/1",
+              "host": ["{{apiUrl}}"],
+              "path": ["1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Employee by Non-existent ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{apiUrl}}/999",
+              "host": ["{{apiUrl}}"],
+              "path": ["999"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create New Employee",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Alice\",\n  \"lastName\": \"Cooper\",\n  \"email\": \"alice.cooper@company.com\",\n  \"phone\": \"+1-555-0106\",\n  \"department\": \"Engineering\",\n  \"position\": \"Software Developer\",\n  \"salary\": 80000,\n  \"hireDate\": \"2024-01-15\",\n  \"status\": \"active\"\n}"
+            },
+            "url": {
+              "raw": "{{apiUrl}}",
+              "host": ["{{apiUrl}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Employee with Invalid Data",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Bob\",\n  \"email\": \"invalid-email\",\n  \"salary\": -1000\n}"
+            },
+            "url": {
+              "raw": "{{apiUrl}}",
+              "host": ["{{apiUrl}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Employee (Full)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"john.doe.updated@company.com\",\n  \"phone\": \"+1-555-0101\",\n  \"department\": \"Engineering\",\n  \"position\": \"Lead Software Engineer\",\n  \"salary\": 105000,\n  \"hireDate\": \"2020-03-15\",\n  \"status\": \"active\"\n}"
+            },
+            "url": {
+              "raw": "{{apiUrl}}/1",
+              "host": ["{{apiUrl}}"],
+              "path": ["1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Employee (Partial)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"position\": \"Senior Marketing Manager\",\n  \"salary\": 85000\n}"
+            },
+            "url": {
+              "raw": "{{apiUrl}}/2",
+              "host": ["{{apiUrl}}"],
+              "path": ["2"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Non-existent Employee",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Test\",\n  \"lastName\": \"User\",\n  \"email\": \"test@company.com\",\n  \"phone\": \"+1-555-0199\",\n  \"department\": \"HR\",\n  \"position\": \"HR Assistant\",\n  \"salary\": 45000,\n  \"hireDate\": \"2024-02-01\",\n  \"status\": \"active\"\n}"
+            },
+            "url": {
+              "raw": "{{apiUrl}}/999",
+              "host": ["{{apiUrl}}"],
+              "path": ["999"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Employee",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{apiUrl}}/5",
+              "host": ["{{apiUrl}}"],
+              "path": ["5"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Non-existent Employee",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{apiUrl}}/999",
+              "host": ["{{apiUrl}}"],
+              "path": ["999"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
